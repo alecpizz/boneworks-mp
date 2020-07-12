@@ -12,16 +12,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Object;
 using Valve.VR;
+
+// Internal MP namespaces
+using MultiplayerMod.Structs;
+using MultiplayerMod.Networking;
+using MultiplayerMod.Representations;
+
+// SLZ namespaces
+using StressLevelZero.Props.Weapons;
+using StressLevelZero.Combat;
 using StressLevelZero.Interaction;
 using StressLevelZero.Utilities;
 using StressLevelZero.Pool;
 using StressLevelZero.AI;
-
-using MultiplayerMod.Structs;
-using MultiplayerMod.Networking;
-using MultiplayerMod.Representations;
-using StressLevelZero.Props.Weapons;
-using StressLevelZero.Combat;
 
 namespace MultiplayerMod.Core
 {

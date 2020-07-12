@@ -40,7 +40,7 @@ namespace MultiplayerMod
         private Server server;
 
         internal static event Action<int> OnLevelWasLoadedEvent;
-        internal static event Action<int> OnLevelWasInitializedEvent;
+        //internal static event Action<int> OnLevelWasInitializedEvent; // Redundant
 
 #if DEBUG
         PlayerRep dummyRep;

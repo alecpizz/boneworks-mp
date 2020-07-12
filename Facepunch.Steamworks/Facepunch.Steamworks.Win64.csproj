@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<AssemblyName>Facepunch.Steamworks.Win64</AssemblyName>
 		<DefineConstants>$(DefineConstants);PLATFORM_WIN64;PLATFORM_WIN;PLATFORM_64</DefineConstants>
-		<TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<TargetFramework>net472</TargetFramework>
 		<LangVersion>7.1</LangVersion>	
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -25,6 +25,14 @@
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
   
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	  <LangVersion>7.3</LangVersion>
+	  <NoStdLib>false</NoStdLib>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	  <LangVersion>7.3</LangVersion>
+	  <NoStdLib>false</NoStdLib>
+	</PropertyGroup>
 	<ItemGroup>
 		<Content Include="steam_api64.dll" PackagePath="\content\" Pack="true" PackageCopyToOutput="true">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
