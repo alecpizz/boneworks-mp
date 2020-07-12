@@ -233,7 +233,6 @@
     <Compile Include="Boneworks\BWUtil.cs" />
     <Compile Include="Source\Features\ClientSettings.cs" />
     <Compile Include="Source\Extras\RETools.cs" />
-    <Compile Include="Source\Core\Client.cs" />
     <Compile Include="Discord\ActivityManager.cs" />
     <Compile Include="Discord\Constants.cs" />
     <Compile Include="Discord\Core.cs" />
@@ -251,8 +250,9 @@
     <Compile Include="Source\Networking\P2PMessage.cs" />
     <Compile Include="Source\Representations\PlayerRep.cs" />
     <Compile Include="Source\Core\RichPresence.cs" />
-    <Compile Include="Source\Core\Server.cs" />
     <Compile Include="Source\Structs\RigTransforms.cs" />
+    <Compile Include="Source\Core\Client\Client.cs" />
+    <Compile Include="Source\Core\Server\Server.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Facepunch.Steamworks\Facepunch.Steamworks.Win64.csproj">
@@ -261,5 +261,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Source\Core\Server\" />
+    <Folder Include="Source\Core\Client\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

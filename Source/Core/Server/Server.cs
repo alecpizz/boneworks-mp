@@ -57,12 +57,6 @@ namespace MultiplayerMod.Core
                     bulletDamage = 2
                     
                 };
-                GameObject instance = GameObject.Instantiate(lineHolder);
-                LineRenderer lineRenderer = instance.GetComponent<LineRenderer>();
-                lineRenderer.widthMultiplier = 0.2f;
-                lineRenderer.SetPosition(0, gfm.fireOrigin);
-                lineRenderer.SetPosition(1, gfm.fireOrigin + (gfm.fireDirection.eulerAngles * 999));
-                GameObject.Destroy(instance, 10);
                 ServerSendToAll(gfm, P2PSend.Unreliable);
         }
 
@@ -88,12 +82,18 @@ namespace MultiplayerMod.Core
                                 Ray ray = new Ray(gfm.fireOrigin, gfm.fireDirection.eulerAngles);
                                 
                                 RaycastHit hit;
-                                GameObject instance = GameObject.Instantiate(lineHolder);
-                                LineRenderer lineRenderer = instance.GetComponent<LineRenderer>();
+
+#if DEBUG
+                                // Ha optimization, screw that, we instantiate per shot!
+                                GameObject lineHolder = new GameObject();
+                                lineHolder.AddComponent<LineRenderer>();
+                                LineRenderer lineRenderer = lineHolder.GetComponent<LineRenderer>();
                                 lineRenderer.widthMultiplier = 0.2f;
                                 lineRenderer.SetPosition(0, gfm.fireOrigin);
                                 lineRenderer.SetPosition(1, gfm.fireOrigin + (gfm.fireDirection.eulerAngles * 999));
-                                GameObject.Destroy(instance, 10);
+                                GameObject.Destroy(lineHolder, 10);
+#endif
+
                                 if (Physics.Raycast(ray, out hit, int.MaxValue, ~0, QueryTriggerInteraction.Ignore))
                                 {
                                     if (hit.transform.root == brett)
@@ -600,12 +600,8 @@ namespace MultiplayerMod.Core
             brett_Health = brett.GetComponent<Player_Health>();
         }
 
-        GameObject lineHolder;
         public void StartServer()
         {
-            lineHolder = new GameObject();
-            lineHolder.AddComponent<LineRenderer>();
-
             brett = GameObject.Find("[RigManager (Default Brett)]");
             brett_Health = brett.GetComponent<Player_Health>();
 
